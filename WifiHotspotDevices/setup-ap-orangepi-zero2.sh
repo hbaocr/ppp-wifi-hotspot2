@@ -10,11 +10,18 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y hostapd dnsmasq ppp minicom iptables python3 psmisc wget
 
+#################use legacy iptables#########################
+echo '---> Please select the legacy option of iptables'
+sudo update-alternatives --config iptables
+
+
+
 ###install nvm and nodejs
 #wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 #source ~/.bashrc
 #nvm install 14
 #install nodejs
+echo '---> Install nodejs 14. Require >= armv7'
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
 apt-get install -y nodejs
 
