@@ -1,0 +1,17 @@
+[Unit]
+Description=API PPP Dial Service
+Requires=network.target
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/rpi-ppp-wifi-ap/WEBAPI
+ExecStart=/home/pi/.nvm/versions/node/v14.19.1/bin/node index.js
+Restart=always
+# Restart service after 10 seconds if node service crashes
+RestartSec=10
+# Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodejs-pppd-dial
+[Install]
+WantedBy=multi-user.target
