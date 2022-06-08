@@ -11,7 +11,7 @@ sudo apt-get upgrade
 sudo apt-get install -y hostapd dnsmasq ppp minicom iptables python3 psmisc wget
 
 #################use legacy iptables#########################
-echo '---> Please select the legacy option of iptables'
+echo '---> Please select the legacy option of iptables: (1) iptables-legacy'
 sudo update-alternatives --config iptables
 
 
