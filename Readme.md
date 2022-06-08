@@ -10,10 +10,11 @@
 sudo apt-get install -y hostapd dnsmasq ppp minicom iptables
 ```
 
-## to install:
+## To install:
 
 * For RPI3, RPI4, RPI zero2w
 ```sh
+cd WifiHotspotDevices
 chmod +x setup-ap-rpi-zero2w.sh
 sudo ./setup-ap-rpi-zero2w.sh
 ```
@@ -24,8 +25,9 @@ sudo ./setup-ap-rpi-zero2w.sh
     * Flash by : balena Etcher
 
 ```sh
-chmod +x setup-ap-rpi-zero2w.sh
-sudo ./setup-ap-rpi-zero2w.sh
+cd WifiHotspotDevices
+chmod +x setup-ap-orangepi-zero2.sh
+sudo ./setup-ap-orangepi-zero2.sh
 ```
 
 
