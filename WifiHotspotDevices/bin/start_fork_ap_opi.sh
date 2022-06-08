@@ -73,9 +73,12 @@ echo "0. Kill wpa_supplicant to release wlan0"
 sudo killall wpa_supplicant
 sleep 1
 
-sudo ifconfig "$wifidev" down
-sleep 1
-sudo ifconfig "$wifidev" up
+# orange pi ==> these cmd cause wifi ap is not started
+# sudo ifconfig "$wifidev" down
+# sleep 1
+# sudo ifconfig "$wifidev" up
+
+
 echo "1.setup static IP address $ip_gateway"
 set_static_ip
 
