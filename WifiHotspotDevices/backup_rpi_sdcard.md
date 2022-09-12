@@ -16,11 +16,13 @@ devfs           353Ki  353Ki    0Bi   100%    1220          0  100%   /dev
 map auto_home     0Bi    0Bi    0Bi   100%       0          0  100%   /System/Volumes/Data/home
 /dev/disk5s1    252Mi   31Mi  221Mi    13%       0          0  100%   /Volumes/boot
 ```
+
 #/dev/disk5s1  ---> this is the logical Volumes Boot on /dev/disk5 disk. Need to backup physical disk /dev/disk5 sector by sector
+
 #===> check physical sdcard /dev/disk5
-ls /dev/disk5
+```ls /dev/disk5```
 
 #to backup
-#sudo dd bs=4m if=/dev/disk5 of=rpi4-ppp-dial.img
+```sudo dd bs=4m if=/dev/disk5 of=rpi4-ppp-dial.img```
 
 #to write: can  use banana etcher to write
