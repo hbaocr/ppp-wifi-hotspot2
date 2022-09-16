@@ -1,0 +1,24 @@
+noipdefault
+ms-dns 8.8.8.8
+asyncmap 0
+noauth
+
+local
+lock
+hide-password
+modem
+-pap
+-chap
+debug
+proxyarp
+#lcp-echo-interval 30
+#lcp-echo-failure 60
+noipx
+nocrtscts
+#vocal sams optimazation
+-detach
+lcp-echo-failure 10
+lcp-echo-interval 20
+lcp-echo-adaptive
+
+netmask 255.255.0.0
