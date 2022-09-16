@@ -1,0 +1,1 @@
+cmd_/home/administrator/sams/tty0tty_PPP_220412/tty0tty.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/administrator/sams/tty0tty_PPP_220412/tty0tty.ko /home/administrator/sams/tty0tty_PPP_220412/tty0tty.o /home/administrator/sams/tty0tty_PPP_220412/tty0tty.mod.o ;  true

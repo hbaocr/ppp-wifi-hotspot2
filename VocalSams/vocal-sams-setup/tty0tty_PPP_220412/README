@@ -1,0 +1,52 @@
+
+## work well on  Ubuntu 18.04.4 LTS
+tty0tty - Linux null modem emulator v1.2 
+
+
+(C) 2016 VOCAL Technologies, Ltd.
+
+
+
+This kernel module creates virtual serial port pairs linked by null modem connections in the /dev directory:
+
+/dev/tnt0 <-> /dev/tnt1
+/dev/tnt2 <-> /dev/tnt3
+etc...
+
+Signal connections are:
+
+  TX   ->  RX
+  RX   <-  TX
+  RTS  ->  CTS
+  CTS  <-  RTS
+  DSR  <-  DTR
+  CD   <-  DTR
+  DTR  ->  DSR
+  DTR  ->  CD
+
+
+This version requires Linux kernel > 3.8
+
+
+BUILD:
+
+make
+generates tty0tty.ko
+
+
+INSTALL:
+
+sudo insmod tty0tty.ko
+
+
+CONFIGURE:
+
+/proc/tty0tty
+The file contains the number of virtual serial port pairs.  It can be read from and written to.  Changes will only take effect if none of the serial ports are in use.
+
+cat /proc/tty0tty
+Shows the current number of pairs
+
+echo 2 > /proc/tty0tty
+Create 2 virtual serial port pairs, 4 serial ports total.
+
