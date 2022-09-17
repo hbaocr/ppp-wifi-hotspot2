@@ -55,6 +55,11 @@ sudo chmod +x /etc/ppp/ip-down
 #############################################
 echo "------->6. Setup WebAPI nodejs"
 
+chmod +x "$setup_path/WEBAPI/bin/get_gateway_ip.sh"
+chmod +x "$setup_path/WEBAPI/bin/get_ppp_ip.sh"
+chmod +x "$setup_path/WEBAPI/bin/ppp_dial.sh"
+chmod +x "$setup_path/WEBAPI/bin/stop_pppd.sh"
+
 cd "$setup_path/WEBAPI"
 npm install
 
