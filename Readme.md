@@ -117,9 +117,20 @@ sudo ip route add default dev ppp0
 
 ######
 Reference
-https://cdn-reichelt.de/documents/datenblatt/G100/8560C1_MANUAL.pdf
+* https://cdn-reichelt.de/documents/datenblatt/G100/8560C1_MANUAL.pdf
 
+* Run cmd in sudo without password
+```sh
+#Other requirement is about permission levels. To properly execute the provided methods the application that uses the module must have the proper sudo privileges. One way to do it could be by adding a custom user to the system:
 
+sudo adduser --no-create-home <user-run-sudo-without-password>
+
+#then add its permissions at /etc/sudoers file:
+
+<user-run-sudo-without-password> ALL=NOPASSWD: /sbin/iptables, /sbin/ip6tables, /sbin/ipset
+
+# here : /sbin/iptables, /sbin/ip6tables, /sbin/ipset can run with sudo without password
+```
 
 
 
