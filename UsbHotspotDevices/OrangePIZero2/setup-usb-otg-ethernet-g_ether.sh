@@ -49,7 +49,7 @@ sudo bash -c 'cat > /etc/network/if-up.d/iptable-setup.sh' << EOF
 #!/bin/bash
 
 #this is the accessible internet  iface
-out_iface=ppp0
+out_iface=eth0
 
 #this is the iface to connect to devices(phone)
 input_iface=usb0

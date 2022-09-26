@@ -132,6 +132,13 @@ sudo adduser --no-create-home <user-run-sudo-without-password>
 # here : /sbin/iptables, /sbin/ip6tables, /sbin/ipset can run with sudo without password
 ```
 
+* Automatically re-apply the iptable rule on system reboot
+ 
+```sh
+sudo apt-get install iptables-persistent
+sudo /etc/init.d/iptables-persistent save
+```
+
 
 
 

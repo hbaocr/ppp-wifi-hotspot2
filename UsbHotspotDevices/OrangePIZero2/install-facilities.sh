@@ -8,7 +8,8 @@ setup_path="$(pwd)"
 echo "1. Install required services"
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install -y hostapd dnsmasq ppp minicom iptables python3 psmisc wget
+sudo apt-get install -y dnsmasq ppp minicom iptables python3 psmisc wget
+
 # if need Wifi AP
 # sudo apt-get install -y hostapd 
 #################use legacy iptables#########################
@@ -24,5 +25,26 @@ sudo update-alternatives --config iptables
 echo '---> Install nodejs 14. Require >= armv7'
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
 apt-get install -y nodejs
+
+################Config dnsmaq#############
+# don't  let it done  auto
+# stop  current running instance
+sudo systemctl stop dnsmasq.service
+# disable restart service
+sudo systemctl disable dnsmasq.service 
+
+# disable systemd-resolved to release port 53 for dnsmasq
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+sudo systemctl mask systemd-resolved
+#To undo what you did:
+# sudo systemctl unmask systemd-resolved
+# sudo systemctl enable systemd-resolved
+# sudo systemctl start systemd-resolved
+
+sudo cp -f "$setup_path/config_ap/dnsmasq.conf" /etc/dnsmasq.conf
+
+sudo systemctl enable dnsmasq.service 
+sudo systemctl restart dnsmasq.service 
 
 
