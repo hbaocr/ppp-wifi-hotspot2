@@ -6,8 +6,8 @@ setup_path="$(pwd)"
 
 ##########################################
 echo "1. Install required services"
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get update -y
+sudo apt-get upgrade -y
 sudo apt-get install -y dnsmasq ppp minicom iptables python3 psmisc wget
 
 # if need Wifi AP
