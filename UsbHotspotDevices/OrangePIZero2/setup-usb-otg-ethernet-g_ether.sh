@@ -33,6 +33,7 @@ EOF
 
 ################################################################
 # setup network interface of usb0
+#https://unix.stackexchange.com/questions/128439/good-detailed-explanation-of-etc-network-interfaces-syntax
 echo "setup usb0 network interface at /etc/network/interfaces"
 sudo bash -c 'cat > /etc/network/interfaces' << EOF
 source /etc/network/interfaces.d/*
@@ -45,16 +46,14 @@ iface lo inet loopback
 allow-hotplug usb0
 auto usb0
 iface usb0 inet static
-address 172.0.0.1
-netmask 255.255.255.0
-post-up /etc/network/if-up.d/iptable-setup.sh
+    address 172.0.0.1
+    netmask 255.255.255.0
+    post-up /etc/network/if-up.d/iptable-setup.sh
 
-# this need to be retested
-# ppp0 gadget
-#auto ppp0
-allow-hotplug ppp0
-#iface ppp0 inet static
-#post-up /etc/network/if-up.d/iptable-setup.sh
+#allow-hotplug ppp0
+auto ppp0
+iface ppp0 inet manual
+    post-up /etc/network/if-up.d/iptable-setup.sh
 
 EOF
 
@@ -64,7 +63,8 @@ sudo bash -c 'cat > /etc/network/if-up.d/iptable-setup.sh' << 'EOF'
 #!/bin/bash
 
 #this is the accessible internet  iface
-out_iface=eth0
+# route usb0 ---> ppp0
+out_iface=ppp0
 
 #this is the iface to connect to devices(phone)
 input_iface=usb0
