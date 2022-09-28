@@ -99,6 +99,33 @@ function get_pppd_pid() {
     });
 }
 
+// if return >0 ==> pppd is running
+function reboot_modem() {
+    let cmd = `sudo reboot`;
+    return new Promise((resolved, reject) => {
+        //console.log(cmd);
+        os_cmd.exec(cmd, function (error, stdout, stderr) {
+            let pppd_pid =-2;
+            if (error) {
+                //console.log(error);
+                pppd_pid =-1;
+            } else {
+                //console.log(stdout);
+                try {
+                    pppd_pid = parseInt(stdout);
+                } catch (error) {
+                    console.log(error)   
+                }
+                if(pppd_pid==NaN){
+                    pppd_pid=0;
+                }
+            }
+            resolved(pppd_pid);
+            //console.log(pppd_pid);
+        });
+    });
+}
+
 module.exports={
     HW_MODEM,
     SAMS_MODEM,
@@ -109,6 +136,7 @@ module.exports={
     hangup_pppd,
     get_iface_ip,
     get_pppd_pid,
+    reboot_modem
 }
 
 

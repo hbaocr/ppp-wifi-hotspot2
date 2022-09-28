@@ -6,6 +6,11 @@ const port = 5099
 const ip = "0.0.0.0"
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Hello from Dialup modem')
+
+})
+
 app.get('/about', (req, res) => {
     res.send('Hello from Dialup modem')
 
@@ -51,6 +56,14 @@ app.post('/hangup', async (req, res) => {
         detail: `Hanging Up. Please wait a bit, than checking the ppp ip.`
     })
 })
+
+app.post('/reboot',  (req, res) => {
+     cmd.reboot_modem();
+     res.send({
+         status: 'OK',
+         detail: `Rebooting the system`
+     })
+ })
 
 app.post('/get_ppp_ip', async (req, res) => {
     try {
