@@ -20,16 +20,32 @@ sudo ./setup-ap-rpi-zero2w.sh
 ```
 
 * For [orangepi zero2(h616)](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-2.html) : 
+    * If you want just burn and run without any setup, burn [this image](https://drive.google.com/file/d/1yBDT1i4S36sehqRUnhSbW7uspNMZJCj8/view?usp=sharing) by Belena Etcher. The image is the backup disk of H616 has the foloowing feature:
+        
+        * g_ether (use_eem=0) using ecm mode through usb0 otg. H616 will play as hotspot and assign ip to the plugin phone or pc through dnsmasq
+        * dnsmasq.conf : only allow to resolve IP of some domain specific in this file, otherwise to route 172.0.0.1
+        * ppp0 script control by webapi. please access the domain `pppdial.net:5099/dial` to dial 
+        * iptable nat `usb0(input iface)-------->pppp0(out put iface)`
 
-    * Image name(current working) :[Orangepizero2_2.2.0_ubuntu_bionic_server_linux4.9.170.7z](https://drive.google.com/file/d/1FWcSAgclSTHlzJOidboPboCIzMTiKs9A/view?usp=sharing)
-    * Image name :  [Orangepizero2_2.2.0_debian_buster_desktop_linux4.9.170.7z](https://drive.google.com/file/d/1aTNyzHfoh_EehlEc7t1IUmlwO9-1h4mH/view?usp=sharing)
-    * Flash by : balena Etcher
+    * If you want to setup yourself from beginnig, use the following image and follow the instruction to install.
 
-```sh
-cd WifiHotspotDevices
-chmod +x setup-ap-orangepi-zero2.sh
-sudo ./setup-ap-orangepi-zero2.sh
-```
+        * Image name(current working) :[Orangepizero2_2.2.0_ubuntu_bionic_server_linux4.9.170.7z](https://drive.google.com/file/d/1FWcSAgclSTHlzJOidboPboCIzMTiKs9A/view?usp=sharing)
+        * Image name :  [Orangepizero2_2.2.0_debian_buster_desktop_linux4.9.170.7z](https://drive.google.com/file/d/1aTNyzHfoh_EehlEc7t1IUmlwO9-1h4mH/view?usp=sharing)
+        * Flash by : balena Etcher
+    
+    * if you want option `usb0-->ppp0` :
+        ```sh
+        cd ppp-wifi-hotspot2/UsbHotspotDevices/OrangePIZero2
+        chmod +x *.sh
+        sudo ./install-all.sh
+        ```
+    * if you want option `wlan0(ap)  ---> ppp0`
+
+        ```sh
+        cd WifiHotspotDevices
+        chmod +x setup-ap-orangepi-zero2.sh
+        sudo ./setup-ap-orangepi-zero2.sh
+        ```
 
 
 
