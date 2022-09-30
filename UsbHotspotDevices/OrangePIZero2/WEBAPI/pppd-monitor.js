@@ -4,6 +4,7 @@ const STATUS_CONNECTED = "Connected";
 const STATUS_HANGUP = "HangUp";
 const STATUS_DIALING = "Dailing";
 
+
 class PppdMonitor {
     constructor(interval = 1000, maxMs = 15 * 60 * 1000) {
         this.interval = interval;
@@ -19,8 +20,9 @@ class PppdMonitor {
         this.exe = this.exe.bind(this);
         this.stop = this.stop.bind(this);
         this.setTimeOut = this.setTimeOut.bind(this);
+        this.pauseCnt=this.pauseCnt.bind(this);
     }
-   
+    
     /* set time to call hangup function */
     setTimeOut(_maxMs = 0) {
         this.infor.Cntactive = true;
@@ -32,6 +34,7 @@ class PppdMonitor {
             this.infor.cnt = this.infor.maxCnt;
         }
     }
+
     exe() {
         this.intervalHdl = setInterval(async () => {
 
@@ -88,6 +91,10 @@ class PppdMonitor {
             this.infor.cnt = this.infor.maxCnt;
             this.infor.msg = "";
         }
+    }
+    pauseCnt(){
+        this.infor.Cntactive= false;
+        this.infor.cnt = this.infor.maxCnt;
     }
     getdata() {
         //return {cnt:this.infor.cnt,status:this.infor.status,msg:this.infor.msg}

@@ -84,6 +84,7 @@ app.post('/hangup', async (req, res) => {
         status: 'OK',
         detail: `Hanging Up. Please wait a bit, than checking the ppp ip.`
     })
+    pppd.pauseCnt();
 })
 
 app.post('/reboot',  (req, res) => {
