@@ -19,9 +19,14 @@ chmod +x setup-ap-rpi-zero2w.sh
 sudo ./setup-ap-rpi-zero2w.sh
 ```
 
+
+
 * For [orangepi zero2(h616)](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-2.html) : 
-    * If you want just burn and run without any setup, burn [this image](https://drive.google.com/file/d/1yBDT1i4S36sehqRUnhSbW7uspNMZJCj8/view?usp=sharing) by Belena Etcher. The image is the backup disk of H616 has the foloowing feature:
+    * If you want just burn and run without any setup, burn [this image 30-09-2022](https://drive.google.com/file/d/19a28wsbkQL9mrA4Azxs6USlQh_GoAZs3/view?usp=sharing) by Belena Etcher.
         
+        * Add to  SSE server sent event in web/index.html to dial from web  
+
+    * If you want just burn and run without any setup, burn [this image 28-09-2022](https://drive.google.com/file/d/1yBDT1i4S36sehqRUnhSbW7uspNMZJCj8/view?usp=sharing) by Belena Etcher. 
         * g_ether (use_eem=0) using ecm mode through usb0 otg. H616 will play as hotspot and assign ip to the plugin phone or pc through dnsmasq
         * dnsmasq.conf : only allow to resolve IP of some domain specific in this file, otherwise to route 172.0.0.1
         * ppp0 script control by webapi. please access the domain `pppdial.net:5099/dial` to dial 

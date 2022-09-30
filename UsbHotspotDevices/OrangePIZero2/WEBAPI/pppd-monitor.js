@@ -81,8 +81,7 @@ class PppdMonitor {
                 this.infor.cnt = this.infor.maxCnt;
             }
 
-           
-            console.log(this.infor);
+            //console.log(this.infor);
         }, this.interval)
     }
     stop() {
