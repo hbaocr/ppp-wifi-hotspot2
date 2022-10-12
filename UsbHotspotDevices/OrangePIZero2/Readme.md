@@ -9,6 +9,17 @@ sudo ifconfig usb0 up
 sudo ifconfig usb0 192.168.10.10
 sudo ifconfig usb0
 ```
+
+or more specific
+
+```sh
+modprobe g_ether dev_addr=00:22:82:ff:ff:11  host_addr=00:50:b6:14:e1:3e
+
+ifconfig usb0 172.0.0.1 netmask 255.255.255.0
+```
+
+
+
 * To load when boot —> for permenant load 
 
 https://manpages.ubuntu.com/manpages/bionic/en/man5/modules.5.html
