@@ -66,10 +66,12 @@ class PppdMonitor {
 
             if(this.infor.Cntactive){
                 
-                if( this.infor.cnt <0){
+                if( this.infor.cnt <=1){
                     this.infor.Cntactive= false;
                     this.infor.cnt = this.infor.maxCnt;
+                    console.log("===> Hangup ....")
                     await cmd.hangup_pppd();
+                    return; //===> avoid magic bug ( drop usb otg when this condition is matched)
                 }
                 this.infor.cnt = this.infor.cnt - this.interval;
                 if(this.infor.status != STATUS_HANGUP){
