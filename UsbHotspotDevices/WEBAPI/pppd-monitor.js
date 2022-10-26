@@ -69,7 +69,7 @@ class PppdMonitor {
                 if( this.infor.cnt <0){
                     this.infor.Cntactive= false;
                     this.infor.cnt = this.infor.maxCnt;
-                    cmd.hangup_pppd();
+                    await cmd.hangup_pppd();
                 }
                 this.infor.cnt = this.infor.cnt - this.interval;
                 if(this.infor.status != STATUS_HANGUP){
