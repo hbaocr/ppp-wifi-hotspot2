@@ -28,7 +28,7 @@ Requires=network.target
 After=network.target
 
 [Service]
-WorkingDirectory=$webapi_path/WEBAPI
+WorkingDirectory=$webapi_path
 ExecStart=$(which node) index.js
 Restart=always
 # Restart service after 10 seconds if node service crashes

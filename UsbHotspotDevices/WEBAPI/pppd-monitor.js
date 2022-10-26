@@ -42,7 +42,7 @@ class PppdMonitor {
                 let ppp_ip = await cmd.get_iface_ip("ppp0");
                 let pppd_pid = await cmd.get_pppd_pid();
 
-                console.log(`ip=${ppp_ip}, pppd_pid=${pppd_pid}`); 
+                //console.log(`ip=${ppp_ip}, pppd_pid=${pppd_pid}`); 
         
                 if (ppp_ip.length > 0) {
                     this.infor.status = STATUS_CONNECTED;
@@ -61,7 +61,7 @@ class PppdMonitor {
                     }
                 }
             } catch (err) {
-                console.log(err);
+                console.error(err);
             }
 
             if(this.infor.Cntactive){
