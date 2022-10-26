@@ -44,6 +44,3 @@ EOF
 sudo systemctl enable webapi.service
 sudo systemctl start webapi.service
 
-#############################################
-echo "Reboot service"
-sudo reboot

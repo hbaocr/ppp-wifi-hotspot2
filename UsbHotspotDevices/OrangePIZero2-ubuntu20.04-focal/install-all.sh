@@ -11,6 +11,7 @@ sudo $current_dir/install-facilities.sh
 
 cd $current_dir
 sudo $current_dir/setup-network-iface.sh
+
 ## in the folder ../WEBAPI
 cd $current_dir
 sudo $current_dir/install-web-api.sh
@@ -18,3 +19,6 @@ sudo $current_dir/install-web-api.sh
 cd $current_dir
 sudo $current_dir/setup-g_ether-gadget-service-onboot.sh
 
+#############################################
+echo "Reboot service"
+sudo reboot
