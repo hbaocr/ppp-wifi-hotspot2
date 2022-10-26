@@ -70,8 +70,8 @@ class PppdMonitor {
                     this.infor.Cntactive= false;
                     this.infor.cnt = this.infor.maxCnt;
                     console.log("===> Hangup ....")
-                    await cmd.hangup_pppd();
-                    return; //===> avoid magic bug ( drop usb otg when this condition is matched)
+                    cmd.hangup_pppd().then(console.log);
+                    return; //===> avoid magic bug ( drop usb otg when this condition is matched). May be because of each timeout is over interval
                 }
                 this.infor.cnt = this.infor.cnt - this.interval;
                 if(this.infor.status != STATUS_HANGUP){
