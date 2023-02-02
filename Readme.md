@@ -62,10 +62,11 @@ sudo ./setup-ap-rpi-zero2w.sh
 sudo ss -lp "sport = :domain"
 # stop systemd-resolved on port 53
 
+```sh
 sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
 sudo systemctl mask systemd-resolved
-
+```
 
 ---
 ### `iptables v1.8.2 (nf_tables): Chain 'MASQUERADE' does not exist`
