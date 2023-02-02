@@ -5,14 +5,14 @@ const SAMS_MODEM = 0
 const DEFAULT_NUMBER = 8000
 const BAUD115200 = 115200
 const DEV_TTYACM0 = "ttyACM0"
+let is_dialing=0
 
 function dial_pppd(modem_type = HW_MODEM, number = DEFAULT_NUMBER, baudrdate = BAUD115200, device = DEV_TTYACM0) {
     return new Promise(async (resolve,reject)=>{
 
-        let cmd_para = ` ${modem_type} ${number} ${baudrdate} ${device} `;
-        let pppd_pid = await get_pppd_pid();
-        if(pppd_pid>0){
-            let msg=`PPPD is dailing(pid= ${pppd_pid}). Please call /hangup to start another session`;
+        let cmd_para = ` ${modem_type} ${number} ${baudrdate} ${device} `
+        if(is_dialing){
+            let msg='PPPD is Dailing. Please call hangup to start another session'
             console.log(msg)
             resolve({
                 status:'DAILING',
@@ -20,6 +20,8 @@ function dial_pppd(modem_type = HW_MODEM, number = DEFAULT_NUMBER, baudrdate = B
             })
             
         } else{
+
+            is_dialing=1
             let cmd = `sudo ./ppp_dial.sh ${cmd_para}`
             cmd = `cd bin && ${cmd}`;
             let cmd_data=''
@@ -46,89 +48,37 @@ function dial_pppd(modem_type = HW_MODEM, number = DEFAULT_NUMBER, baudrdate = B
 }
 
 function hangup_pppd() {
-    return new Promise((resolved, reject) => {
+    is_dialing=0
     let cmd = `sudo  killall pppd`
     //console.log(cmd);
     os_cmd.exec(cmd, function (error, stdout, stderr) {
         if (error) {
-            resolved(error);
             console.log(stderr);
         } else {
-            resolved(stdout);
+            console.log(stdout);
         }
-    });})
+    });
 }
 
 
 function get_iface_ip(iface_name) {
     return new Promise((resolved, reject) => {
+
         let cmd = `ifconfig ${iface_name} |grep "inet " | awk '{print $2}'`
         //console.log(cmd);
         os_cmd.exec(cmd, function (error, stdout, stderr) {
             if (error) {
                 reject(stderr);
             } else {
-                resolved(stdout.toString().trim());
+                resolved(stdout);
             }
         });
     })
 }
 
-// if return >0 ==> pppd is running
-function get_pppd_pid() {
-    let cmd = `sudo pidof pppd`;
-    return new Promise((resolved, reject) => {
-        //console.log(cmd);
-        os_cmd.exec(cmd, function (error, stdout, stderr) {
-            let pppd_pid =-2;
-            if (error) {
-                //console.log(error);
-                pppd_pid =-1;
-            } else {
-                //console.log(stdout);
-                try {
-                    pppd_pid = parseInt(stdout);
-                } catch (error) {
-                    console.log(error)   
-                }
-                if(pppd_pid==NaN){
-                    pppd_pid=0;
-                }
-            }
-            resolved(pppd_pid);
-            //console.log(pppd_pid);
-        });
-    });
-}
-
-// if return >0 ==> pppd is running
-function reboot_modem() {
-    let cmd = `sudo reboot`;
-    return new Promise((resolved, reject) => {
-        //console.log(cmd);
-        os_cmd.exec(cmd, function (error, stdout, stderr) {
-            let pppd_pid =-2;
-            if (error) {
-                //console.log(error);
-                pppd_pid =-1;
-            } else {
-                //console.log(stdout);
-                try {
-                    pppd_pid = parseInt(stdout);
-                } catch (error) {
-                    console.log(error)   
-                }
-                if(pppd_pid==NaN){
-                    pppd_pid=0;
-                }
-            }
-            resolved(pppd_pid);
-            //console.log(pppd_pid);
-        });
-    });
-}
 
 module.exports={
+    is_dialing,
     HW_MODEM,
     SAMS_MODEM,
     DEFAULT_NUMBER,
@@ -137,10 +87,7 @@ module.exports={
     dial_pppd,
     hangup_pppd,
     get_iface_ip,
-    get_pppd_pid,
-    reboot_modem
 }
-
 
 
 // async function test(){

@@ -46,17 +46,15 @@ function dial_pppd(modem_type = HW_MODEM, number = DEFAULT_NUMBER, baudrdate = B
 }
 
 function hangup_pppd() {
-    return new Promise((resolved, reject) => {
     let cmd = `sudo  killall pppd`
     //console.log(cmd);
     os_cmd.exec(cmd, function (error, stdout, stderr) {
         if (error) {
-            resolved(error);
             console.log(stderr);
         } else {
-            resolved(stdout);
+            console.log(stdout);
         }
-    });})
+    });
 }
 
 

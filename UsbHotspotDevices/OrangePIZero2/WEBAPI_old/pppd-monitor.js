@@ -42,7 +42,7 @@ class PppdMonitor {
                 let ppp_ip = await cmd.get_iface_ip("ppp0");
                 let pppd_pid = await cmd.get_pppd_pid();
 
-                //console.log(`ip=${ppp_ip}, pppd_pid=${pppd_pid}`); 
+                console.log(`ip=${ppp_ip}, pppd_pid=${pppd_pid}`); 
         
                 if (ppp_ip.length > 0) {
                     this.infor.status = STATUS_CONNECTED;
@@ -61,17 +61,15 @@ class PppdMonitor {
                     }
                 }
             } catch (err) {
-                console.error(err);
+                console.log(err);
             }
 
             if(this.infor.Cntactive){
                 
-                if( this.infor.cnt <=1){
+                if( this.infor.cnt <0){
                     this.infor.Cntactive= false;
                     this.infor.cnt = this.infor.maxCnt;
-                    console.log("===> Hangup ....")
-                    cmd.hangup_pppd().then(console.log);
-                    return; //===> avoid magic bug ( drop usb otg when this condition is matched). May be because of each timeout is over interval
+                    cmd.hangup_pppd();
                 }
                 this.infor.cnt = this.infor.cnt - this.interval;
                 if(this.infor.status != STATUS_HANGUP){
