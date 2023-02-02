@@ -57,16 +57,17 @@ sudo ./setup-ap-rpi-zero2w.sh
 ## Problem 
 ---
 ### `dnsmasq: failed to create listening socket for port 53: Address already in use`
-#https://askubuntu.com/questions/191226/dnsmasq-failed-to-create-listening-socket-for-port-53-address-already-in-use
-#check
-sudo ss -lp "sport = :domain"
-# stop systemd-resolved on port 53
+* (Link)(https://askubuntu.com/questions/191226/dnsmasq-failed-to-create-listening-socket-for-port-53-address-already-in-use)
+* check `sudo ss -lp "sport = :domain"`
+* `stop systemd-resolved on port 53`
 
 ```sh
 sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
 sudo systemctl mask systemd-resolved
 ```
+
+
 
 ---
 ### `iptables v1.8.2 (nf_tables): Chain 'MASQUERADE' does not exist`
