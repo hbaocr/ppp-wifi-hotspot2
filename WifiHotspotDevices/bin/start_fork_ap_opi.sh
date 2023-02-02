@@ -45,8 +45,9 @@ config_iptable(){
 start_hostapd(){
         echo "config IPtable"
         config_iptable
-        echo "start hostapd"
+       
         sudo killall hostapd
+        echo "start hostapd"
         sudo hostapd ../config_ap/hostapd.conf
 }
 
@@ -68,7 +69,12 @@ set_default_route(){
         sudo ip route add default dev $pppdev
 }
 
-echo "0. Kill wpa_supplicant to release wlan0"
+echo "0. Kill wpa_supplicant and NetworkManager to release wlan0"
+#in jammmy( ubnuntu 22), the card is controlled by NetworkManager--> kill this one to release wlan0 for hostapd
+sudo airmon-ng check
+
+sudo airmon-ng check kill
+
 # kill wpa_supplicant to release wlan0
 sudo killall wpa_supplicant
 sleep 1
@@ -91,4 +97,4 @@ echo "3.start AP"
 start_hostapd & # fork this process and run parallel
 sleep 60
 echo "start dnsmag=====>"
-start_dnsmasq # fork this process and run parallel
+start_dnsmasq
