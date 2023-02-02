@@ -8,7 +8,7 @@ setup_path="$(pwd)"
 echo "1. Install required services"
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install -y hostapd dnsmasq ppp minicom iptables python3 psmisc wget
+sudo apt-get install -y hostapd dnsmasq ppp minicom iptables python3 psmisc wget aircrack-ng
 
 #################use legacy iptables#########################
 echo '---> Please select the legacy option of iptables: (1) iptables-legacy'
