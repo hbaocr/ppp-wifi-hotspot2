@@ -97,6 +97,12 @@ SyslogIdentifier=nodejs-pppd-dial
 WantedBy=multi-user.target
 EOF
 
+#stop systemd-resolved on port 53 to let dnsmasq be able to work
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+sudo systemctl mask systemd-resolved
+
+# start the service
 sudo systemctl enable webapi.service
 sudo systemctl start webapi.service
 
