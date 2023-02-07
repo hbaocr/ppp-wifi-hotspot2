@@ -70,10 +70,20 @@ set_default_route(){
 }
 
 echo "0. Kill wpa_supplicant and NetworkManager to release wlan0"
-#in jammmy( ubnuntu 22), the card is controlled by NetworkManager--> kill this one to release wlan0 for hostapd
-sudo airmon-ng check
 
-sudo airmon-ng check kill
+
+kernel_version=$(uname -r | awk -F. '{print $1"."$2}')
+
+if [[ "$(echo "$kernel_version > 4.9" | bc)" -eq 1 ]]; then
+  echo "Kernel version is greater than 4.9"
+  #in jammmy( ubnuntu 22), the card is controlled by NetworkManager--> kill this one to release wlan0 for hostapd
+  sudo airmon-ng check
+  sudo airmon-ng check kill
+else
+  echo "Kernel version is less than or equal 4.9"
+fi
+
+
 
 # kill wpa_supplicant to release wlan0
 sudo killall wpa_supplicant
