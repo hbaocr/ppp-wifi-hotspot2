@@ -8,7 +8,17 @@ setup_path="$(pwd)"
 echo "1. Install required services"
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install -y hostapd dnsmasq ppp minicom iptables python3 psmisc wget aircrack-ng
+sudo apt-get install -y hostapd dnsmasq ppp minicom iptables python3 psmisc wget
+
+kernel_version=$(uname -r | awk -F. '{print $1"."$2}')
+
+if [[ "$(echo "$kernel_version > 4.9" | bc)" -eq 1 ]]; then
+  echo "Kernel version is greater than to 4.9"
+  sudo apt-get install -y aircrack-ng
+else
+  echo "Kernel version is less than or equal 4.9"
+fi
+
 
 #################use legacy iptables#########################
 echo '---> Please select the legacy option of iptables: (1) iptables-legacy'
