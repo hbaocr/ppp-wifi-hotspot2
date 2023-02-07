@@ -36,6 +36,7 @@ sudo ./setup-ap-rpi-zero2w.sh
 
         * Image name(current working) :[Orangepizero2_2.2.0_ubuntu_bionic_server_linux4.9.170.7z](https://drive.google.com/file/d/1FWcSAgclSTHlzJOidboPboCIzMTiKs9A/view?usp=sharing)
         * Image name :  [Orangepizero2_2.2.0_debian_buster_desktop_linux4.9.170.7z](https://drive.google.com/file/d/1aTNyzHfoh_EehlEc7t1IUmlwO9-1h4mH/view?usp=sharing)
+        * Image name : [Orangpizero2_ubuntu_bionic_server_wifi_pp_dial_linux4.9.170.7z](https://drive.google.com/file/d/1Wex6QzWUKevh78XkXinmAYehOM_CNo2h/view?usp=share_link)
         * Flash by : balena Etcher
     
     * if you want option `usb0-->ppp0` :
