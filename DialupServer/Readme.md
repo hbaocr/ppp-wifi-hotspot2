@@ -21,6 +21,7 @@ sudo  ./start-dialup-server.sh
 * http://sites.e-advies.nl/radius-pppd.html
 * https://forums.openqnx.com/t/topic/544/2
 * http://modemhelp.org/inits/
+* https://www.cisco.com/c/en/us/td/docs/ios/dial/configuration/guide/15_0s/dia_15_0s_book/dia_modem_init_strngs.pdf
 * https://docs.oracle.com/cd/E19683-01/816-4882/6mb2ipqb3/index.html
 
 
