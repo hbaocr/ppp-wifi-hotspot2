@@ -20,4 +20,8 @@ sudo  ./start-dialup-server.sh
 * https://randombio.com/linuxsetup17.html
 * http://sites.e-advies.nl/radius-pppd.html
 * https://forums.openqnx.com/t/topic/544/2
+* http://modemhelp.org/inits/
+* https://docs.oracle.com/cd/E19683-01/816-4882/6mb2ipqb3/index.html
+
+
 
