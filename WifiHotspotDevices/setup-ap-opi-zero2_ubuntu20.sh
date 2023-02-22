@@ -20,6 +20,7 @@ if [[ "$(echo "$kernel_version > 4.9" | bc)" -eq 1 ]]; then
   echo "Kernel version is greater than to 4.9"
   # downgrade wpasupplicant because of the bug of wpasupplicant
   sudo apt-get install -y wpasupplicant=2:2.9-1ubuntu4.2
+                                    
   #sudo apt-get install -y aircrack-ng
 else
   echo "Kernel version is less than or equal 4.9"
@@ -41,32 +42,6 @@ apt-get install -y nodejs
 #################use legacy iptables#########################
 echo '---> Please select the legacy option of iptables: (1) iptables-legacy'
 sudo update-alternatives --config iptables
-
-
-### Disable NetworkManager service to avoid the conflict with hostapd
-sudo systemctl stop NetworkManager.service
-sudo systemctl disable NetworkManager.service
-sudo systemctl mask NetworkManager.service
-
-#when disable Networkmamanger built-in DHCP client and DNS client also stop
-# need to setup  your self
-
-sudo bash -c 'cat > /etc/resolv.conf' << EOF
-nameserver 8.8.8.8
-nameserver 8.8.1.1
-EOF
-
-#setup for eth0 port
-sudo bash -c 'cat > /etc/network/interfaces' << EOF
-auto eth0
-iface eth0 inet static
-  address 10.66.77.9
-  netmask 255.255.255.0
-  gateway 10.66.77.1
-EOF
-
-sudo systemctl restart networking.service
-
 
 
 ##########################################
@@ -149,6 +124,41 @@ sudo systemctl mask systemd-resolved
 sudo systemctl enable webapi.service
 sudo systemctl start webapi.service
 
+
+# disbale dnsmasq service also
+sudo systemctl stop dnsmasq.service
+sudo systemctl disable dnsmasq.service
+sudo systemctl mask dnsmasq.service
+
+
+### Disable NetworkManager service to avoid the conflict with hostapd
+sudo systemctl stop NetworkManager.service
+sudo systemctl disable NetworkManager.service
+sudo systemctl mask NetworkManager.service
+
+#when disable Networkmamanger built-in DHCP client and DNS client also stop
+# need to setup ETH0 your self
+
+sudo bash -c 'cat > /etc/resolv.conf' << EOF
+nameserver 8.8.8.8
+nameserver 8.8.1.1
+EOF
+
+#setup for eth0 port
+sudo bash -c 'cat > /etc/network/interfaces' << EOF
+source /etc/network/interfaces.d/*
+# Network is managed by Network manager
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+  address 10.66.77.9
+  netmask 255.255.255.0
+  gateway 10.66.77.1
+EOF
+
+sudo systemctl restart networking.service
 
 
 
