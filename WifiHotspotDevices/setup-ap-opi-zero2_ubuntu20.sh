@@ -18,8 +18,9 @@ kernel_version=$(uname -r | awk -F. '{print $1"."$2}')
 
 if [[ "$(echo "$kernel_version > 4.9" | bc)" -eq 1 ]]; then
   echo "Kernel version is greater than to 4.9"
+  # downgrade wpasupplicant because of the bug of wpasupplicant
+  sudo apt-get install -y wpasupplicant=2:2.9-1ubuntu4.2
   #sudo apt-get install -y aircrack-ng
-  
 else
   echo "Kernel version is less than or equal 4.9"
   exit -1
