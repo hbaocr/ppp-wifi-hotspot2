@@ -34,6 +34,12 @@ RestartSec=90
 WantedBy=multi-user.target
 EOF
 
+sudo systemctl disable mgetty@ttyACM0.service
+sudo systemctl enable mgetty@ttyACM0.service
+sudo systemctl restart mgetty@ttyACM0.service
+
+
+exit
 sudo systemctl disable mgetty@tntb0.service
 sudo systemctl disable mgetty@tntb1.service
 sudo systemctl disable mgetty@tntb2.service

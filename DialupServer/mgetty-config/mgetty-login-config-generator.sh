@@ -66,8 +66,10 @@ sudo bash -c 'cat > /etc/mgetty/login.config' << EOF
 #/AutoPPP/ -     a_ppp   /usr/sbin/pppd auth -chap +pap login debug
 #/AutoPPP/ -     a_ppp   /usr/sbin/pppd
 # Vocal optimization config
-/AutoPPP/ -	a_ppp	/usr/sbin/pppd lcp-echo-interval 5 lcp-echo-failure 5 auth -chap +pap login debug
+#/AutoPPP/ -	a_ppp	/usr/sbin/pppd lcp-echo-interval 5 lcp-echo-failure 5 auth -chap +pap login debug
 
+#Hbaocr : the configure para is already in /etc/ppp/options
+/AutoPPP/ -     a_ppp   /usr/sbin/pppd
 
 #
 #

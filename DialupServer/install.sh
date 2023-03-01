@@ -1,5 +1,16 @@
 #!/bin/bash
 ##########################################
+# Get the Ubuntu version
+ubuntu_version="$(lsb_release -r | awk '{print $2}')"
+
+# Check if the Ubuntu version is greater than 20
+if [[ "$(echo $ubuntu_version | cut -d. -f1)" -gt 20 || ("$(echo $ubuntu_version | cut -d. -f1)" -eq 20 && "$(echo $ubuntu_version | cut -d. -f2)" -gt 0) ]]
+then
+    echo "The Ubuntu version is greater than 20. This may not work on this OS"
+    exit
+else
+    echo "The Ubuntu version is not greater than 20."
+fi
 
 echo "1. Install facilities"
 sudo ./install-dialup-facilities.sh
