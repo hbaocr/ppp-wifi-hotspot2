@@ -12,11 +12,11 @@
 #\K - Sets the break control.
 #S2 Designates the ASCII character used to indicate an escape character (refer to an ASCII character conversion chart)
 #\Bn - Sends a break command to a remote modem n=0-9 in 100 milliseconds.
-TIMEOUT         3
-ABORT           '\nBUSY\r'
-ABORT           '\nNO ANSWER\r'
-ABORT           '\nRINGING\r\n\r\nRINGING\r'
-ABORT           '\nNO CARRIER\r'
+TIMEOUT         3                               
+ABORT           '\nBUSY\r'                      
+ABORT           '\nNO ANSWER\r'                 
+ABORT           '\nRINGING\r\n\r\nRINGING\r'    
+ABORT           '\nNO CARRIER\r'                
 ''              '\B5'
 ''              '\K'
 ''              '\K'
@@ -24,12 +24,9 @@ ABORT           '\nNO CARRIER\r'
 ''              '+++ATH'
 ''              '+++ATH'
 ''              '+++ATH'
-''              AT
-OK              ATZ
-OK              "\rATQ0 V1 E0 S0=0 S2=255 &C1 &D2 +FCLASS=0"
-OK              "AT+MS=V34"
-TIMEOUT         120
-OK              ATD\T
+''              "\rATQ0 V1 E0 S0=0 S2=255 &C1 &D2 +FCLASS=0"
+TIMEOUT         120                             
+OK              ATD\T                         
 NECT            '\n\n\n'
-ogin: dream
+ogin: dream                                
 ssword: dreamcast
