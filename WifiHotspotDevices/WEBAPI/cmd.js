@@ -18,36 +18,36 @@ function dial_pppd(modem_type = HW_MODEM, number = DEFAULT_NUMBER, baudrdate = B
                 status:'DAILING',
                 detail: msg
             })
-            
+
         } else{
             let cmd = `sudo ./ppp_dial.sh ${cmd_para}`
             cmd = `cd bin && ${cmd}`;
             let cmd_data=''
             let child =  os_cmd.exec(cmd)
             child.stdout.on('data', function(data) {
-                
+
                 cmd_data = cmd_data+data.toString()
-                console.log(data.toString()); 
+                console.log(data.toString());
                 if(cmd_data.search(`remote IP address`)>0){
-                    
+
                     resolve({
                         status:'CONNECTED',
                         detail: 'Established pppd with server.'
                     })
                 }
-                
+
             })
-           
+
         }
-       
+
 
     })
-    
+
 }
 
 function hangup_pppd() {
     return new Promise((resolved, reject) => {
-    let cmd = `sudo  killall pppd`
+    let cmd = `cd bin && sudo ./stop_pppd.sh`
     //console.log(cmd);
     os_cmd.exec(cmd, function (error, stdout, stderr) {
         if (error) {
@@ -89,7 +89,7 @@ function get_pppd_pid() {
                 try {
                     pppd_pid = parseInt(stdout);
                 } catch (error) {
-                    console.log(error)   
+                    console.log(error)
                 }
                 if(pppd_pid==NaN){
                     pppd_pid=0;
@@ -116,7 +116,7 @@ function reboot_modem() {
                 try {
                     pppd_pid = parseInt(stdout);
                 } catch (error) {
-                    console.log(error)   
+                    console.log(error)
                 }
                 if(pppd_pid==NaN){
                     pppd_pid=0;
@@ -152,7 +152,7 @@ module.exports={
 //     } catch (error) {
 //         console.log(`error`)
 //     }
-   
+
 // }
 
 // test()

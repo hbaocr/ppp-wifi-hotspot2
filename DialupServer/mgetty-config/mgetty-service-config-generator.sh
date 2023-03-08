@@ -27,8 +27,7 @@ Restart=always
 PIDFile=/var/log/mgetty.pid.%i
 #https://www.freedesktop.org/software/systemd/man/systemd.service.html
 #Configures the time to sleep before restarting a service
-RestartSec=90
-
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

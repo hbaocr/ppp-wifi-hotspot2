@@ -24,10 +24,12 @@ ABORT           '\nNO CARRIER\r'
 ''              '+++ATH'
 ''              '+++ATH'
 ''              '+++ATH'
-''              AT
+''              'AT'
 OK              ATZ
-OK              "\rATQ0 V1 E0 S0=0 S2=255 &C1 &D2 +FCLASS=0"
-OK              "AT+MS=V34"
+''              'AT+MS=V34'
+''              'AT+MS=V90'
+''              'AT+MS=V92'
+''              "\rATQ0 V1 E0 S0=0 S2=255 &C1 &D2 &K3 +FCLASS=0"
 TIMEOUT         120
 OK              ATD\T
 NECT            '\n\n\n'
