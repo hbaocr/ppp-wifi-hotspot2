@@ -42,7 +42,8 @@ sudo systemctl mask systemd-resolved
 # sudo systemctl enable systemd-resolved
 # sudo systemctl start systemd-resolved
 
-sudo cp -f "$setup_path/config_ap/dnsmasq.conf" /etc/dnsmasq.conf
+# this line is already setup in /etc/dnsmasq.d/usb0 by load-usb-gadget.sh
+# sudo cp -f "$setup_path/config_ap/dnsmasq.conf" /etc/dnsmasq.conf
 
 sudo systemctl enable dnsmasq.service 
 sudo systemctl restart dnsmasq.service 

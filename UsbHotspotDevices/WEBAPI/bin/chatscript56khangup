@@ -1,0 +1,11 @@
+#!/bin/sh
+TIMEOUT         3
+ABORT           'ERROR'
+ABORT           'NO DIALTONE'
+SAY             '\nSending break to the modem\n'
+''              +++
+''              +++
+''              +++
+''              ATH
+HANGUP          ON
+SAY             '\nGoodbay\n'
