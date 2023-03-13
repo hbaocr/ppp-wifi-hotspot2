@@ -11,6 +11,10 @@ sudo apt-get upgrade -y
 sudo apt-get install -y libusb-1.0-0-dev libglib2.0-dev libconfig-dev libdbus-1-dev libglib2.0-dev
 sudo apt-get install -y dnsmasq ppp minicom iptables python3 psmisc wget
 
+# check usb gadget type  support by this kernel
+echo "1. USB gadget supported by this os kernel"
+sudo zgrep USB_F_ /proc/config.gz
+
 # if need Wifi AP
 # sudo apt-get install -y hostapd 
 #################use legacy iptables#########################
