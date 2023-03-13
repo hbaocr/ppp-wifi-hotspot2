@@ -8,6 +8,7 @@ setup_path="$(pwd)"
 echo "1. Install required services"
 sudo apt-get update -y
 sudo apt-get upgrade -y
+sudo apt-get install -y libusb-1.0-0-dev libglib2.0-dev libconfig-dev libdbus-1-dev libglib2.0-dev
 sudo apt-get install -y dnsmasq ppp minicom iptables python3 psmisc wget
 
 # if need Wifi AP
