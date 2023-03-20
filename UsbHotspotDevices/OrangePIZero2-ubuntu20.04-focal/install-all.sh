@@ -9,8 +9,8 @@ chmod +x ./bin/ppp/ip-up
 cd $current_dir
 sudo $current_dir/install-facilities.sh
 
-cd $current_dir
-sudo $current_dir/setup-network-iface.sh
+cd $current_dir/utils
+sudo ./setup-network-iface.sh
 
 ## in the folder ../WEBAPI
 cd $current_dir

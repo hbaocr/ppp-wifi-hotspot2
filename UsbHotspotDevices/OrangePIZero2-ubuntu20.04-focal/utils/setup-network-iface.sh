@@ -4,6 +4,7 @@
 ################################################################
 # setup network interface of usb0
 #https://unix.stackexchange.com/questions/128439/good-detailed-explanation-of-etc-network-interfaces-syntax
+echo "Whenever The network iface usb0 or ppp0 is up, the iptables script iptable-setup.sh is triggered to route all traffic to ppp0 iface "
 echo "setup usb0 network interface at /etc/network/interfaces"
 sudo bash -c 'cat > /etc/network/interfaces' << EOF
 source /etc/network/interfaces.d/*
