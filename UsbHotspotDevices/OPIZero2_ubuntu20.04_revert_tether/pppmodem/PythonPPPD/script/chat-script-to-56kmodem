@@ -1,0 +1,12 @@
+
+TIMEOUT         3                               
+ABORT           '\nBUSY\r'                      
+ABORT           '\nNO ANSWER\r'                 
+ABORT           '\nRINGING\r\n\r\nRINGING\r'    
+ABORT           '\nNO CARRIER\r'                
+''              "\rATQ0 V1 E0 S0=0 S2=128 &C1 &D2 +FCLASS=0" 
+TIMEOUT         240                             
+OK              ATD\T                         
+NECT            '\n\n\n'
+ogin: dream                                
+ssword: dreamcast
