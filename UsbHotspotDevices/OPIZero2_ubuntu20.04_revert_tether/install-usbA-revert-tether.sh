@@ -3,17 +3,17 @@
 #https://drive.google.com/file/d/1LXvrSuMj9fP5Ldnjg1AoVe3AUbsbGWVY/view?usp=sharing
 
 
-# Android App --> Android system network --> VPN tunnel --->Usb AOA --->|Phone USB C port| 
-#                                                                               |
-#                                                                               |
-#                                                                               V
-#                                                                       [USB A port OPI(host)]
-#                                                                               |
-#                                                                               |
-#                                                                               V
-# OuputIface(wlan0| eth0| ppp0) <---- Iptable <--- Tun0(10.10.10.1) <--- SimpleRT(ServerApp run as service)
-#                                                    ^
-#                                                    ^  
+# Android App --> Android system network --> VPN tunnel(10.10.10.2)---> Android VPN apk --->Usb AOA --->|Phone USB C port| 
+#                                                                                                             |
+#                                                                                                             |
+#                                                                                                             V
+#                                                                                                    [USB A port OPI(host)]
+#                                                                                                             |
+#                                                                                                             |
+#                                                                                                             V
+# OuputIface(wlan0| eth0| ppp0) <---- Iptable script by serverApp <--- Tun0(10.10.10.1) <--- SimpleRT(ServerApp run as service)
+#                                                                               ^
+#                                                                               ^  
 #                                                  DnsServer(Dnsmasq) bind to Tun0(10.10.10.1)
 #                                                  Do whilelist to resolve name request
                                 
