@@ -127,7 +127,7 @@ no-resolv
 server=/.idlogiq.com/8.8.8.8
 
 # allow *.drkumo.com
-server=/d3.drkumo.com/8.8.8.8
+server=/.drkumo.com/8.8.8.8
 
 server=/time.android.com/8.8.8.8
 server=/ntp.org/8.8.8.8
